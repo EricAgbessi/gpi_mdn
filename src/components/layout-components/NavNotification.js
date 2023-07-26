@@ -59,30 +59,11 @@ export const NavNotification = () => {
     setVisible(flag);
   }
 
-  const notificationList = (
-    <div className="nav-dropdown nav-notification">
-      <div className="nav-notification-header d-flex justify-content-between align-items-center">
-        <h4 className="mb-0">Notification</h4>
-        <Button className="text-primary" type="text" onClick={() => setData([])} size="small">Clear </Button>
-      </div>
-      <div className="nav-notification-body">
-        {getNotificationBody(data)}
-      </div>
-      {
-        data.length > 0 ? 
-        <div className="nav-notification-footer">
-          <a className="d-block" href="#/">View all</a>
-        </div>
-        :
-        null
-      }
-    </div>
-  );
+
 
   return (
     <Dropdown 
       placement="bottomRight"
-      overlay={notificationList}
       onVisibleChange={handleVisibleChange}
       visible={visible}
       trigger={['click']}

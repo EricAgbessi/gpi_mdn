@@ -315,7 +315,7 @@ const componentsNavTree = [
   {
     key: "components-general",
     path: `${APP_PREFIX_PATH}/components/general`,
-    title: "sidenav.components.general",
+    title: "User",
     icon: InfoCircleOutlined,
     breadcrumb: true,
     submenu: [
@@ -329,7 +329,7 @@ const componentsNavTree = [
       },
       {
         key: "components-general-icon",
-        path: `${APP_PREFIX_PATH}/components/general/icon`,
+        path: `${APP_PREFIX_PATH}/users/askquestion`,
         title: "Poser un probleme",
         icon: QuestionCircleOutlined,
         breadcrumb: true,
@@ -337,8 +337,100 @@ const componentsNavTree = [
       },
       {
         key: "components-general-typography",
-        path: `${APP_PREFIX_PATH}/components/general/typography`,
+        path: `${APP_PREFIX_PATH}/users/patrimoine`,
         title: "Patrimoine",
+        icon: QrcodeOutlined,
+        breadcrumb: true,
+        submenu: [],
+      },
+    ],
+  },
+];
+
+const componentsNavAdmin = [
+  {
+    key: "components-general",
+    path: `${APP_PREFIX_PATH}/components/general`,
+    title: "Administrateur",
+    icon: InfoCircleOutlined,
+    breadcrumb: true,
+    submenu: [
+      {
+        key: "components-general-button",
+        path: `${APP_PREFIX_PATH}/users/dashboards`,
+        title: "Acceuil",
+        icon: AppstoreOutlined,
+        breadcrumb: true,
+        submenu: [],
+      },
+      {
+        key: "components-general-icon",
+        path: `${APP_PREFIX_PATH}/users/askquestion`,
+        title: "Requetes",
+        icon: QuestionCircleOutlined,
+        breadcrumb: true,
+        submenu: [],
+      },
+      {
+        key: "components-general-typography",
+        path: `${APP_PREFIX_PATH}/users/patrimoine`,
+        title: "Structures",
+        icon: QrcodeOutlined,
+        breadcrumb: true,
+        submenu: [],
+      },
+      {
+        key: "components-general-typography",
+        path: `${APP_PREFIX_PATH}/users/patrimoine`,
+        title: "Fonctions",
+        icon: QrcodeOutlined,
+        breadcrumb: true,
+        submenu: [],
+      },
+      {
+        key: "components-general-typography",
+        path: `${APP_PREFIX_PATH}/users/patrimoine`,
+        title: "Catégorie de matériel",
+        icon: QrcodeOutlined,
+        breadcrumb: true,
+        submenu: [],
+      },
+      {
+        key: "components-general-typography",
+        path: `${APP_PREFIX_PATH}/users/patrimoine`,
+        title: "Matériel",
+        icon: QrcodeOutlined,
+        breadcrumb: true,
+        submenu: [],
+      },
+      {
+        key: "components-general-typography",
+        path: `${APP_PREFIX_PATH}/users/patrimoine`,
+        title: "Pièces",
+        icon: QrcodeOutlined,
+        breadcrumb: true,
+        submenu: [],
+      },
+      {
+        key: "components-general-typography",
+        path: `${APP_PREFIX_PATH}/users/patrimoine`,
+        title: "Poser un problème",
+        icon: QrcodeOutlined,
+        breadcrumb: true,
+        submenu: [],
+      },
+      {
+        key: "components-general-typography",
+        path: `${APP_PREFIX_PATH}/users/patrimoine`,
+        title: "Fournisseurs",
+        icon: QrcodeOutlined,
+        breadcrumb: true,
+        submenu: [],
+      },
+      {
+        key: "components-general-typography",
+        path: `${APP_PREFIX_PATH}/users/patrimoine`,
+        title: "Reporting",
         icon: QrcodeOutlined,
         breadcrumb: true,
         submenu: [],
@@ -379,6 +471,7 @@ const navigationConfig = [
   // ...dashBoardNavTree,
   //...appsNavTree,
   ...componentsNavTree,
+  //...componentsNavAdmin,
   // ...extraNavTree,
   // ...docsNavTree
 ];

@@ -17,6 +17,26 @@ export const AppViews = () => {
         />
 
         <Route
+          path={`${APP_PREFIX_PATH}/users/askquestion`}
+          component={lazy(() => import(`./components/AskQuestion`))}
+        />
+
+        <Route
+          path={`${APP_PREFIX_PATH}/users/patrimoine`}
+          component={lazy(() => import(`./components/Patrimoine`))}
+        />
+
+        <Route
+          path={`${APP_PREFIX_PATH}/users/profil`}
+          component={lazy(() => import(`./components/Profil`))}
+        />
+
+        <Route
+          path={`${APP_PREFIX_PATH}/users/notification`}
+          component={lazy(() => import(`./components/Notification`))}
+        />
+
+        <Route
           path={`${APP_PREFIX_PATH}/apps`}
           component={lazy(() => import(`./apps`))}
         />

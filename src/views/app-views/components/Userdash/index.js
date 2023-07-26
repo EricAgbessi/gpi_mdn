@@ -14,7 +14,7 @@ import StatisticWidget from "components/shared-components/StatisticWidget";
 import ChartWidget from "components/shared-components/ChartWidget";
 import AvatarStatus from "components/shared-components/AvatarStatus";
 import GoalWidget from "components/shared-components/GoalWidget";
-
+import { Divider } from "antd";
 import ApexChart from "react-apexcharts";
 import { apexLineChartDefaultOption, COLOR_2 } from "constants/ChartConstant";
 import {
@@ -25,87 +25,16 @@ import {
   EllipsisOutlined,
   StopOutlined,
   StarOutlined,
+  QuestionCircleOutlined,
+  PoweroffOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
 import utils from "utils";
 import { withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const MembersChart = (props) => <ApexChart {...props} />;
-
-const memberChartOption = {
-  ...apexLineChartDefaultOption,
-  ...{
-    chart: {
-      sparkline: {
-        enabled: true,
-      },
-    },
-    colors: [COLOR_2],
-  },
-};
-
-const newJoinMemberOption = (
-  <Menu>
-    <Menu.Item key="0">
-      <span>
-        <div className="d-flex align-items-center">
-          <PlusOutlined />
-          <span className="ml-2">Add all</span>
-        </div>
-      </span>
-    </Menu.Item>
-    <Menu.Item key="1">
-      <span>
-        <div className="d-flex align-items-center">
-          <StopOutlined />
-          <span className="ml-2">Disable all</span>
-        </div>
-      </span>
-    </Menu.Item>
-  </Menu>
-);
-
-const latestTransactionOption = (
-  <Menu>
-    <Menu.Item key="0">
-      <span>
-        <div className="d-flex align-items-center">
-          <ReloadOutlined />
-          <span className="ml-2">Refresh</span>
-        </div>
-      </span>
-    </Menu.Item>
-    <Menu.Item key="1">
-      <span>
-        <div className="d-flex align-items-center">
-          <PrinterOutlined />
-          <span className="ml-2">Print</span>
-        </div>
-      </span>
-    </Menu.Item>
-    <Menu.Item key="12">
-      <span>
-        <div className="d-flex align-items-center">
-          <FileExcelOutlined />
-          <span className="ml-2">Export</span>
-        </div>
-      </span>
-    </Menu.Item>
-  </Menu>
-);
-
-const cardDropdown = (menu) => (
-  <Dropdown overlay={menu} trigger={["click"]} placement="bottomRight">
-    <a
-      href="/#"
-      className="text-gray font-size-lg"
-      onClick={(e) => e.preventDefault()}
-    >
-      <EllipsisOutlined />
-    </a>
-  </Dropdown>
-);
 
 const headTitle = (color) => {
   <Row style={color}>
@@ -113,85 +42,151 @@ const headTitle = (color) => {
     <p>kmsdkmsfpm</p>
   </Row>;
 };
-
-const tableColumns = [
+const columns = [
   {
-    title: "Customer",
+    title: "Requetes",
     dataIndex: "name",
     key: "name",
-    render: (text, record) => (
-      <div className="d-flex align-items-center">
-        <Avatar
-          size={30}
-          className="font-size-sm"
-          style={{ backgroundColor: record.avatarColor }}
-        >
-          {utils.getNameInitial(text)}
-        </Avatar>
-        <span className="ml-2">{text}</span>
-      </div>
-    ),
+    render: (text) => <a>{text}</a>,
   },
   {
     title: "Date",
-    dataIndex: "date",
-    key: "date",
+    dataIndex: "age",
+    key: "age",
   },
   {
-    title: "Amount",
-    dataIndex: "amount",
-    key: "amount",
+    title: "Heure",
+    dataIndex: "address",
+    key: "address",
   },
   {
-    title: () => <div className="text-right">Status</div>,
-    key: "status",
-    render: (_, record) => (
-      <div className="text-right">
-        <Tag
-          className="mr-0"
-          color={
-            record.status === "Approved"
-              ? "cyan"
-              : record.status === "Pending"
-              ? "blue"
-              : "volcano"
+    title: "Technicien",
+    dataIndex: "address",
+    key: "address",
+  },
+  {
+    title: "Status",
+    key: "tags",
+    dataIndex: "tags",
+    render: (tags) => (
+      <span>
+        {tags.map((tag) => {
+          let color = tag.length > 5 ? "geekblue" : "green";
+          if (tag === "loser") {
+            color = "volcano";
           }
-        >
-          {record.status}
-        </Tag>
-      </div>
+          return (
+            <Tag color={color} key={tag}>
+              {tag.toUpperCase()}
+            </Tag>
+          );
+        })}
+      </span>
     ),
   },
 ];
 
+const data = [
+  {
+    key: "1",
+    name: "John Brown",
+    age: 32,
+    address: "New York No. 1 Lake Park",
+    tags: ["nice"],
+  },
+  {
+    key: "2",
+    name: "Jim Green",
+    age: 42,
+    address: "London No. 1 Lake Park",
+    tags: ["loser"],
+  },
+  {
+    key: "3",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool"],
+  },
+];
 export const DefaultDashboard = () => {
   return (
     <Row span={24}>
       <Col span={24}>
-        <Row
-          justify="space-around"
-          style={{ width: "100%", border: "1px solid black" }}
-        >
-          <Col span={4}>
+        <Row justify="space-between" style={{ width: "100%", flexGrow: 1 }}>
+          <Col span={7}>
             <Card
-              title={<headTitle color={{ color: "black" }} />}
+              title={
+                <Row justify="center" align="center" color="#8674fc">
+                  <StarOutlined style={{ color: "#8674fc" }} />
+                </Row>
+              }
               bordered={false}
             >
-              Card content
+              <Col justify="center" align="center">
+                <h1 style={{ color: "#8674fc" }}>100</h1>
+                <p>Requetes Total</p>
+              </Col>
             </Card>
           </Col>
-          <Col span={4}>
-            <Card title="Card title" bordered={false}>
-              Card content
+          <Col span={7}>
+            <Card
+              title={
+                <Row justify="center" align="center">
+                  <StarOutlined style={{ color: "#5898fa" }} />
+                </Row>
+              }
+              bordered={false}
+            >
+              <Col justify="center" align="center" color="5898fa">
+                <h1 style={{ color: "#5898fa" }}>100</h1>
+                <p>Requetes résolues</p>
+              </Col>
             </Card>
           </Col>
-          <Col span={4}>
-            <Card title="Card title" bordered={false}>
-              Card content
+          <Col span={7} justify="center" align="center">
+            <Card
+              title={
+                <Row justify="center" align="center">
+                  <StarOutlined style={{ color: "#de7dff" }} />
+                </Row>
+              }
+              bordered={false}
+            >
+              <Col justify="center" align="center">
+                <h1 style={{ color: "#de7dff" }}>100</h1>
+                <p>Requetes en cours</p>
+              </Col>
             </Card>
           </Col>
         </Row>
-        <div>2</div>
+        <Row span={24}>
+          <Card style={{ width: "100%" }}>
+            <Table
+              columns={columns}
+              dataSource={data}
+              title={() => {
+                return (
+                  <Row justify="space-between">
+                    <p style={{ fontWeight: "bold", color: "black" }}>
+                      Mes dernières requetes
+                    </p>
+                    <Button
+                      style={{ backgroundColor: "#3b5998" }}
+                      type="primary"
+                      icon={<QuestionCircleOutlined />}
+                    >
+                      <a href="askquestion" style={{ color: "white" }}>
+                        {" "}
+                        Poser un problème
+                      </a>
+                    </Button>
+                  </Row>
+                );
+              }}
+            />
+          </Card>
+        </Row>
       </Col>
     </Row>
   );

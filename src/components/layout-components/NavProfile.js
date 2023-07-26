@@ -1,71 +1,79 @@
 import React from "react";
-import { Menu, Dropdown, Avatar } from "antd";
-import { connect } from 'react-redux'
-import { 
-  EditOutlined, 
-  SettingOutlined, 
-  ShopOutlined, 
-  QuestionCircleOutlined, 
-  LogoutOutlined 
-} from '@ant-design/icons';
-import Icon from 'components/util-components/Icon';
-import { signOut } from 'redux/actions/Auth';
+import { Menu, Dropdown, Avatar, Row, Col } from "antd";
+import { connect } from "react-redux";
+import {
+  EditOutlined,
+  SettingOutlined,
+  ShopOutlined,
+  QuestionCircleOutlined,
+  LogoutOutlined,
+} from "@ant-design/icons";
+import Icon from "components/util-components/Icon";
+import { signOut } from "redux/actions/Auth";
 
 const menuItem = [
-	{
-		title: "Edit Profile",
-		icon: EditOutlined ,
-		path: "/"
-    },
-    
-    {
-		title: "Account Setting",
-		icon: SettingOutlined,
-		path: "/"
-    },
-    {
-		title: "Billing",
-		icon: ShopOutlined ,
-		path: "/"
-	},
-    {
-		title: "Help Center",
-		icon: QuestionCircleOutlined,
-		path: "/"
-	}
-]
+  {
+    title: "Edit Profile",
+    icon: EditOutlined,
+    path: "/",
+  },
 
-export const NavProfile = ({signOut}) => {
+  {
+    title: "Account Setting",
+    icon: SettingOutlined,
+    path: "/",
+  },
+];
+
+export const NavProfile = ({ signOut }) => {
   const profileImg = "/img/avatars/thumb-1.jpg";
   const profileMenu = (
     <div className="nav-profile nav-dropdown">
       <div className="nav-profile-header">
-        <div className="d-flex">
+        <div className="d-flex" style={{ justifyContent: "center" }}>
           <Avatar size={45} src={profileImg} />
-          <div className="pl-3">
-            <h4 className="mb-0">Charlie Howard</h4>
-            <span className="text-muted">Frontend Developer</span>
-          </div>
         </div>
       </div>
       <div className="nav-profile-body">
         <Menu>
-          {menuItem.map((el, i) => {
-            return (
-              <Menu.Item key={i}>
-                <a href={el.path}>
-                  <Icon className="mr-3" type={el.icon} />
-                  <span className="font-weight-normal">{el.title}</span>
-                </a>
-              </Menu.Item>
-            );
-          })}
-          <Menu.Item key={menuItem.length + 1} onClick={e => signOut()}>
-            <span>
-              <LogoutOutlined className="mr-3"/>
-              <span className="font-weight-normal">Sign Out</span>
-            </span>
-          </Menu.Item>
+          <Col
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Menu.Item style={{ margin: "0px", padding: "0px" }}>
+              <a href="/profil">
+                <span className="font-weight-normal">Jaen Doew</span>
+              </a>
+            </Menu.Item>
+
+            <Menu.Item style={{ margin: "0px", padding: "0px" }}>
+              <a href="profil">
+                <span className="font-weight-normal">Voir mon profil</span>
+              </a>
+            </Menu.Item>
+
+            <Menu.Item
+              key={menuItem.length + 1}
+              onClick={(e) => signOut()}
+              style={{ margin: "0px", padding: "0px" }}
+            >
+              <span
+                style={{
+                  backgroundColor: "#f26e6e",
+                  color: "white",
+                  padding: "10px",
+                  borderRadius: "5px",
+                }}
+              >
+                <LogoutOutlined className="mr-3" />
+                <span className="font-weight-normal"> Me deconnecter</span>
+              </span>
+            </Menu.Item>
+          </Col>
         </Menu>
       </div>
     </div>
@@ -79,6 +87,6 @@ export const NavProfile = ({signOut}) => {
       </Menu>
     </Dropdown>
   );
-}
+};
 
-export default connect(null, {signOut})(NavProfile)
+export default connect(null, { signOut })(NavProfile);

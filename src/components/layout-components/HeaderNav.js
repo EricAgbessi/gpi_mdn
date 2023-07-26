@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Layout } from "antd";
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
+import { Badge, Button, Layout, Popover, Row } from "antd";
+import { SearchOutlined, BellOutlined } from "@ant-design/icons";
 import Logo from "./Logo";
 import NavNotification from "./NavNotification";
 import NavProfile from "./NavProfile";
@@ -80,6 +76,29 @@ export const HeaderNav = (props) => {
     }
   });
 
+  const text = <span>Title</span>;
+  const content = (
+    <ul className="ant-menu ant-menu-root ant-menu-horizontal">
+      {isMobile ? (
+        <li
+          className="ant-menu-item ant-menu-item-only-child"
+          onClick={() => {
+            onSearchActive();
+          }}
+        >
+          <SearchOutlined />
+        </li>
+      ) : (
+        <li
+          className="ant-menu-item ant-menu-item-only-child"
+          style={{ cursor: "auto" }}
+        >
+          <SearchInput mode={mode} isMobile={isMobile} />
+        </li>
+      )}
+    </ul>
+  );
+
   return (
     <Header
       className={`app-header ${navMode}`}
@@ -93,46 +112,41 @@ export const HeaderNav = (props) => {
             width: `calc(100% - ${getNavWidth()})`,
           }}
         >
-          <div className="nav-left">
-            <ul className="ant-menu ant-menu-root ant-menu-horizontal">
-              {isNavTop && !isMobile ? null : (
-                <li
-                  className="ant-menu-item ant-menu-item-only-child"
-                  onClick={() => {
-                    onToggle();
-                  }}
-                >
-                  {navCollapsed || isMobile ? (
-                    <MenuUnfoldOutlined className="nav-icon" />
-                  ) : (
-                    <MenuFoldOutlined className="nav-icon" />
-                  )}
-                </li>
-              )}
-              {isMobile ? (
-                <li
-                  className="ant-menu-item ant-menu-item-only-child"
-                  onClick={() => {
-                    onSearchActive();
-                  }}
-                >
-                  <SearchOutlined />
-                </li>
-              ) : (
-                <li
-                  className="ant-menu-item ant-menu-item-only-child"
-                  style={{ cursor: "auto" }}
-                >
-                  <SearchInput mode={mode} isMobile={isMobile} />
-                </li>
-              )}
-            </ul>
+          <div
+            className="nav-left"
+            style={{
+              padding: "10px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "0px",
+            }}
+          >
+            <h2>Bienvenu Jane</h2>
+            <p>Administeur</p>
           </div>
           <div className="nav-right">
-            <NavNotification />
-            <NavLanguage />
+            <Row
+              justify="space-around"
+              align="middle"
+              style={{
+                cursor: "pointer",
+                width: "100px",
+              }}
+              gutter={16}
+            >
+              <Popover placement="left" content={content} trigger="click">
+                <SearchOutlined />
+              </Popover>
+              <a href="notification">
+                <Badge count={8}>
+                  <BellOutlined className="nav-icon mx-auto" type="bell" />
+                </Badge>
+              </a>
+            </Row>
+
             <NavProfile />
-            <NavPanel direction={direction} />
           </div>
           <NavSearch active={searchActive} close={onSearchClose} />
         </div>
