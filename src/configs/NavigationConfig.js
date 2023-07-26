@@ -365,7 +365,7 @@ const componentsNavAdmin = [
       },
       {
         key: "components-general-icon",
-        path: `${APP_PREFIX_PATH}/users/askquestion`,
+        path: `${APP_PREFIX_PATH}/admin/request`,
         title: "Requetes",
         icon: QuestionCircleOutlined,
         breadcrumb: true,
@@ -470,8 +470,8 @@ const docsNavTree = [
 const navigationConfig = [
   // ...dashBoardNavTree,
   //...appsNavTree,
-  ...componentsNavTree,
-  //...componentsNavAdmin,
+  // ...componentsNavTree,
+  ...componentsNavAdmin,
   // ...extraNavTree,
   // ...docsNavTree
 ];

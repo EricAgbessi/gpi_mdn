@@ -32,6 +32,16 @@ export const AppViews = () => {
         />
 
         <Route
+          path={`${APP_PREFIX_PATH}/admin/request`}
+          component={lazy(() => import(`./components/Requetes`))}
+        />
+
+        <Route
+          path={`${APP_PREFIX_PATH}/admin/requestdetails`}
+          component={lazy(() => import(`./dashboards/DetailsRequetes`))}
+        />
+
+        <Route
           path={`${APP_PREFIX_PATH}/users/notification`}
           component={lazy(() => import(`./components/Notification`))}
         />
