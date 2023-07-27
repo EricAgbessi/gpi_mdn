@@ -102,7 +102,11 @@ export const HeaderNav = (props) => {
   return (
     <Header
       className={`app-header ${navMode}`}
-      style={{ backgroundColor: headerNavColor }}
+      style={{
+        backgroundColor: "#fafafb",
+        boxShadow: "none",
+        marginBottom: "30px",
+      }}
     >
       <div className={`app-header-wrapper ${isNavTop ? "layout-top-nav" : ""}`}>
         <Logo logoType={navMode} />
@@ -112,19 +116,11 @@ export const HeaderNav = (props) => {
             width: `calc(100% - ${getNavWidth()})`,
           }}
         >
-          <div
-            className="nav-left"
-            style={{
-              padding: "10px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "0px",
-            }}
-          >
-            <h2>Bienvenu Jane</h2>
-            <p>Administeur</p>
+          <div className="nav-left">
+            <div style={{ paddingLeft: "20px" }}>
+              <h2>Bienvenu Jane</h2>
+              <p>Administeur</p>
+            </div>
           </div>
           <div className="nav-right">
             <Row

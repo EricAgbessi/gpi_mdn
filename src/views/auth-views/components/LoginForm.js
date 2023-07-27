@@ -38,13 +38,20 @@ export const LoginForm = (props) => {
   } = props;
 
   const initialCredential = {
-    email: "user1@themenate.net",
+    Email: "user@gmail.com",
     password: "2005ipo",
   };
 
   const onLogin = (values) => {
     showLoading();
-    signIn(values);
+    localStorage.setItem("AUTH_USER", JSON.stringify(values));
+
+    signIn({
+      email: "user1@themenate.net",
+      password: "2005ipo",
+    });
+
+    //document.location.href = "http://localhost:3000/app/users/dashboards";
   };
 
   const onGoogleLogin = () => {

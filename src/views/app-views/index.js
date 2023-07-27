@@ -42,6 +42,31 @@ export const AppViews = () => {
         />
 
         <Route
+          path={`${APP_PREFIX_PATH}/admin/structure`}
+          component={lazy(() => import(`./components/Structure`))}
+        />
+
+        <Route
+          path={`${APP_PREFIX_PATH}/admin/fonction`}
+          component={lazy(() => import(`./components/Fonction`))}
+        />
+
+        <Route
+          path={`${APP_PREFIX_PATH}/admin/categorie`}
+          component={lazy(() => import(`./components/Categorie`))}
+        />
+
+        <Route
+          path={`${APP_PREFIX_PATH}/admin/materiel`}
+          component={lazy(() => import(`./components/Materiel`))}
+        />
+
+        <Route
+          path={`${APP_PREFIX_PATH}/admin/addmateriel`}
+          component={lazy(() => import(`./components/AddMeteriel`))}
+        />
+
+        <Route
           path={`${APP_PREFIX_PATH}/users/notification`}
           component={lazy(() => import(`./components/Notification`))}
         />

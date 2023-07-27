@@ -314,9 +314,8 @@ const appsNavTree = [
 const componentsNavTree = [
   {
     key: "components-general",
-    path: `${APP_PREFIX_PATH}/components/general`,
-    title: "User",
-    icon: InfoCircleOutlined,
+    permission: "user@gmail.com",
+    title: ".",
     breadcrumb: true,
     submenu: [
       {
@@ -350,9 +349,8 @@ const componentsNavTree = [
 const componentsNavAdmin = [
   {
     key: "components-general",
-    path: `${APP_PREFIX_PATH}/components/general`,
-    title: "Administrateur",
-    icon: InfoCircleOutlined,
+    title: ".",
+    permission: "admin@gmail.com",
     breadcrumb: true,
     submenu: [
       {
@@ -372,39 +370,39 @@ const componentsNavAdmin = [
         submenu: [],
       },
       {
-        key: "components-general-typography",
-        path: `${APP_PREFIX_PATH}/users/patrimoine`,
+        key: "structures",
+        path: `${APP_PREFIX_PATH}/admin/structure`,
         title: "Structures",
         icon: QrcodeOutlined,
         breadcrumb: true,
         submenu: [],
       },
       {
-        key: "components-general-typography",
-        path: `${APP_PREFIX_PATH}/users/patrimoine`,
+        key: "Fonctions",
+        path: `${APP_PREFIX_PATH}/admin/fonction`,
         title: "Fonctions",
         icon: QrcodeOutlined,
         breadcrumb: true,
         submenu: [],
       },
       {
-        key: "components-general-typography",
-        path: `${APP_PREFIX_PATH}/users/patrimoine`,
+        key: "categorie",
+        path: `${APP_PREFIX_PATH}/admin/categorie`,
         title: "Catégorie de matériel",
         icon: QrcodeOutlined,
         breadcrumb: true,
         submenu: [],
       },
       {
-        key: "components-general-typography",
-        path: `${APP_PREFIX_PATH}/users/patrimoine`,
+        key: "materiel",
+        path: `${APP_PREFIX_PATH}/admin/materiel`,
         title: "Matériel",
         icon: QrcodeOutlined,
         breadcrumb: true,
         submenu: [],
       },
       {
-        key: "components-general-typography",
+        key: "pieces",
         path: `${APP_PREFIX_PATH}/users/patrimoine`,
         title: "Pièces",
         icon: QrcodeOutlined,
@@ -412,7 +410,7 @@ const componentsNavAdmin = [
         submenu: [],
       },
       {
-        key: "components-general-typography",
+        key: "probleme",
         path: `${APP_PREFIX_PATH}/users/patrimoine`,
         title: "Poser un problème",
         icon: QrcodeOutlined,
@@ -420,7 +418,7 @@ const componentsNavAdmin = [
         submenu: [],
       },
       {
-        key: "components-general-typography",
+        key: "Fournisseurs",
         path: `${APP_PREFIX_PATH}/users/patrimoine`,
         title: "Fournisseurs",
         icon: QrcodeOutlined,
@@ -428,7 +426,7 @@ const componentsNavAdmin = [
         submenu: [],
       },
       {
-        key: "components-general-typography",
+        key: "Reporting",
         path: `${APP_PREFIX_PATH}/users/patrimoine`,
         title: "Reporting",
         icon: QrcodeOutlined,
@@ -470,7 +468,7 @@ const docsNavTree = [
 const navigationConfig = [
   // ...dashBoardNavTree,
   //...appsNavTree,
-  // ...componentsNavTree,
+  ...componentsNavTree,
   ...componentsNavAdmin,
   // ...extraNavTree,
   // ...docsNavTree

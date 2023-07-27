@@ -43,6 +43,20 @@ const SideNavContent = (props) => {
       onMobileNavToggle(false);
     }
   };
+
+  const Deselect = (params) => {
+    /* params.domEvent.target.parentElement.parentElement.style.width = "100%";
+    params.domEvent.target.parentElement.parentElement.style.backgroundColor =
+      "#3b5897";
+    params.domEvent.target.parentElement.parentElement.style.color = "white";*/
+  };
+  const Selected = (params) => {
+    /* params.domEvent.target.parentElement.parentElement.style.width = "100%";
+    params.domEvent.target.parentElement.parentElement.style.backgroundColor =
+      "white";
+    params.domEvent.target.parentElement.parentElement.style.color = "#3b5897";*/
+  };
+
   return (
     <Menu
       theme={sideNavTheme === SIDE_NAV_LIGHT ? "light" : "dark"}
@@ -51,17 +65,21 @@ const SideNavContent = (props) => {
         height: "100%",
         borderRight: 0,
         backgroundColor: "#3b5897",
+        marginTop: "0px",
+        paddingTop: "0px",
         color: "#ffffff",
         zIndex: 99999,
       }}
+      onDeselect={Deselect}
+      onSelect={Selected}
       defaultSelectedKeys={[routeInfo?.key]}
       defaultOpenKeys={setDefaultOpen(routeInfo?.key)}
       className={hideGroupTitle ? "hide-group-title" : ""}
     >
-      <Menu.Item style={{ height: "100px" }}>
+      <Menu.Item style={{ height: "100px", margin: "0px", padding: "0px" }}>
         <div
           style={{
-            marginTop: "20px",
+            margin: "0px",
             height: "200px",
             backgroundImage: `url("/img/defense.png")`,
             backgroundRepeat: "no-repeat",
@@ -71,11 +89,10 @@ const SideNavContent = (props) => {
         ></div>
       </Menu.Item>
       {navigationConfig.map((menu) =>
-        menu.submenu.length > 0 ? (
-          <Menu.ItemGroup
-            key={menu.key}
-            title={setLocale(localization, menu.title)}
-          >
+        menu.submenu.length > 0 &&
+        JSON.parse(localStorage.getItem("AUTH_USER")).email ==
+          menu.permission ? (
+          <Menu.ItemGroup key={menu.key}>
             {menu.submenu.map((subMenuFirst) =>
               subMenuFirst.submenu.length > 0 ? (
                 <SubMenu
@@ -105,23 +122,17 @@ const SideNavContent = (props) => {
               ) : (
                 <Menu.Item key={subMenuFirst.key}>
                   {subMenuFirst.icon ? <Icon type={subMenuFirst.icon} /> : null}
-                  <span>{setLocale(localization, subMenuFirst.title)}</span>
+                  <span>{setLocale(localization, subMenuFirst?.title)}</span>
                   <Link
                     onClick={() => closeMobileNav()}
-                    to={subMenuFirst.path}
+                    to={subMenuFirst?.path}
                   />
                 </Menu.Item>
               )
             )}
           </Menu.ItemGroup>
         ) : (
-          <Menu.Item key={menu.key}>
-            {menu.icon ? <Icon type={menu?.icon} /> : null}
-            <span>{setLocale(localization, menu?.title)}</span>
-            {menu.path ? (
-              <Link onClick={() => closeMobileNav()} to={menu.path} />
-            ) : null}
-          </Menu.Item>
+          ""
         )
       )}
     </Menu>
