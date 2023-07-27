@@ -15,6 +15,7 @@ import {
   signInWithGoogleAuthenticated,
   signInWithFacebookAuthenticated,
 } from "../actions/Auth";
+import { APP_PREFIX_PATH, AUTH_PREFIX_PATH } from "configs/AppConfig";
 
 import FirebaseService from "services/FirebaseService";
 
@@ -34,7 +35,7 @@ export function* signInWithFBEmail() {
         yield put(authenticated(user.user.uid));
         console.log(user);
         // localStorage.setItem("AUTH_USER", JSON.stringify(user));
-        document.location.href = "http://localhost:3000/app/users/dashboards";
+        document.location.href = "/app/users/dashboards";
       }
     } catch (err) {
       yield put(showAuthMessage(err));
