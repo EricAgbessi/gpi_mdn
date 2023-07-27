@@ -35,7 +35,8 @@ export function* signInWithFBEmail() {
         yield put(authenticated(user.user.uid));
         console.log(user);
         // localStorage.setItem("AUTH_USER", JSON.stringify(user));
-        document.location.href = "/app/users/dashboards";
+        document.location.href =
+          "https://gpi-mdn-git-master-ericagbessi.vercel.app/app/users/dashboards";
       }
     } catch (err) {
       yield put(showAuthMessage(err));
