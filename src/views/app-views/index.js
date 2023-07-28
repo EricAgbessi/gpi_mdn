@@ -121,7 +121,7 @@ export const AppViews = () => {
         />
         <Redirect
           from={`${APP_PREFIX_PATH}`}
-          to={`${APP_PREFIX_PATH}/dashboards`}
+          to={`${APP_PREFIX_PATH}/users/dashboards`}
         />
       </Switch>
     </Suspense>
