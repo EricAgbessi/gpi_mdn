@@ -76,10 +76,17 @@ const SideNavContent = (props) => {
       defaultOpenKeys={setDefaultOpen(routeInfo?.key)}
       className={hideGroupTitle ? "hide-group-title" : ""}
     >
-      <Menu.Item style={{ height: "100px", margin: "0px", padding: "0px" }}>
+      <Menu.Item
+        style={{
+          height: "100px",
+          margin: "0px",
+          padding: "0px",
+        }}
+      >
         <div
           style={{
             margin: "0px",
+            padding: "0px",
             height: "200px",
             backgroundImage: `url("/img/defense.png")`,
             backgroundRepeat: "no-repeat",
@@ -92,20 +99,30 @@ const SideNavContent = (props) => {
         menu.submenu.length > 0 &&
         JSON.parse(localStorage.getItem("AUTH_USER")).email ==
           menu.permission ? (
-          <Menu.ItemGroup key={menu.key}>
+          <Menu.ItemGroup
+            key={menu.key}
+            style={{
+              margin: "0px",
+              padding: "0px",
+            }}
+          >
             {menu.submenu.map((subMenuFirst) =>
               subMenuFirst.submenu.length > 0 ? (
                 <SubMenu
                   icon={
                     subMenuFirst.icon ? (
-                      <Icon type={subMenuFirst?.icon} />
+                      <Icon
+                        width="30px"
+                        height="30px"
+                        type={subMenuFirst?.icon}
+                      />
                     ) : null
                   }
                   key={subMenuFirst.key}
                   title={setLocale(localization, subMenuFirst.title)}
                 >
                   {subMenuFirst.submenu.map((subMenuSecond) => (
-                    <Menu.Item key={subMenuSecond.key}>
+                    <Menu.Item key={subMenuSecond.key} style={{ color: "red" }}>
                       {subMenuSecond.icon ? (
                         <Icon type={subMenuSecond?.icon} />
                       ) : null}
@@ -120,9 +137,26 @@ const SideNavContent = (props) => {
                   ))}
                 </SubMenu>
               ) : (
-                <Menu.Item key={subMenuFirst.key}>
-                  {subMenuFirst.icon ? <Icon type={subMenuFirst.icon} /> : null}
-                  <span>{setLocale(localization, subMenuFirst?.title)}</span>
+                <Menu.Item
+                  key={subMenuFirst.key}
+                  style={{
+                    margin: "0px",
+                    paddingLeft: "10px",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: "20px",
+                      marginRight: "10px",
+                    }}
+                  >
+                    {subMenuFirst.icon ? (
+                      <Icon type={subMenuFirst.icon} />
+                    ) : null}
+                  </span>
+                  <span style={{ fontWeight: "normal" }}>
+                    {setLocale(localization, subMenuFirst?.title)}
+                  </span>
                   <Link
                     onClick={() => closeMobileNav()}
                     to={subMenuFirst?.path}
@@ -135,6 +169,21 @@ const SideNavContent = (props) => {
           ""
         )
       )}
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "flex-end",
+          backgroundColor: "#3B5998",
+          height: "150px",
+        }}
+      >
+        <p style={{ color: "white", textAlign: "center", width: "70%" }}>
+          Direction des Systèmes d’Information
+        </p>
+      </div>
     </Menu>
   );
 };

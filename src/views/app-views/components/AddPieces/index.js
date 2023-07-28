@@ -160,10 +160,10 @@ export default function AddMeteriel() {
               <Col span={7}>
                 <Form.Item
                   name="gender"
-                  label={label("Etat")}
+                  label={label("Status")}
                   rules={[{ required: true }]}
                 >
-                  <Select placeholder="Etat " allowClear>
+                  <Select placeholder="Status " allowClear>
                     <Option value="male">male</Option>
                     <Option value="female">female</Option>
                     <Option value="other">other</Option>
@@ -192,7 +192,7 @@ export default function AddMeteriel() {
               </Col>
               <Col>
                 <Form.Item
-                  label="Marque "
+                  label="Nméro"
                   name="username"
                   rules={[
                     {
@@ -200,36 +200,6 @@ export default function AddMeteriel() {
                       message: "Please input your username!",
                     },
                   ]}
-                >
-                  <Input style={InputStyle} />
-                </Form.Item>
-              </Col>
-              <Col>
-                <Form.Item
-                  label="Numéro"
-                  name="username"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your username!",
-                    },
-                  ]}
-                  style={{ color: "white" }}
-                >
-                  <Input style={InputStyle} />
-                </Form.Item>
-              </Col>
-              <Col>
-                <Form.Item
-                  label="Catégorie "
-                  name="username"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your username!",
-                    },
-                  ]}
-                  style={{ color: "white" }}
                 >
                   <Input style={InputStyle} />
                 </Form.Item>
@@ -251,16 +221,36 @@ export default function AddMeteriel() {
               </Col>
             </Col>
             <Col span={12}>
-              <Dragger
-                {...props}
-                style={{ borderColor: "black", borderWidth: "2px" }}
-              >
-                <p style={{ fontSize: "16px", fontWeight: "bold" }}>
-                  <UploadOutlined /> Ajouter une photo
-                </p>
-                <p className="ant-upload-text"></p>
-                <p className="ant-upload-hint"></p>
-              </Dragger>
+              <Col>
+                <Form.Item
+                  label="Marque"
+                  name="username"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your username!",
+                    },
+                  ]}
+                  style={{ color: "white" }}
+                >
+                  <Input style={InputStyle} />
+                </Form.Item>
+              </Col>
+              <Col>
+                <Form.Item
+                  label="Catégorie"
+                  name="username"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your username!",
+                    },
+                  ]}
+                  style={{ color: "white" }}
+                >
+                  <Input style={InputStyle} />
+                </Form.Item>
+              </Col>
             </Col>
             <Row
               style={{

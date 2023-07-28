@@ -15,6 +15,10 @@ export const AppViews = () => {
           path={`${APP_PREFIX_PATH}/users/dashboards`}
           component={lazy(() => import(`./components/Userdash`))}
         />
+        <Route
+          path={`${APP_PREFIX_PATH}/admin/reporting`}
+          component={lazy(() => import(`./components/Reporting`))}
+        />
 
         <Route
           path={`${APP_PREFIX_PATH}/users/askquestion`}
@@ -64,6 +68,26 @@ export const AppViews = () => {
         <Route
           path={`${APP_PREFIX_PATH}/admin/addmateriel`}
           component={lazy(() => import(`./components/AddMeteriel`))}
+        />
+
+        <Route
+          path={`${APP_PREFIX_PATH}/admin/pieces`}
+          component={lazy(() => import(`./components/Pieces`))}
+        />
+
+        <Route
+          path={`${APP_PREFIX_PATH}/admin/addpieces`}
+          component={lazy(() => import(`./components/AddPieces`))}
+        />
+
+        <Route
+          path={`${APP_PREFIX_PATH}/admin/utilisateur`}
+          component={lazy(() => import(`./components/Utilisateur`))}
+        />
+
+        <Route
+          path={`${APP_PREFIX_PATH}/admin/fournisseur`}
+          component={lazy(() => import(`./components/Fournisseur`))}
         />
 
         <Route

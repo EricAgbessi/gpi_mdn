@@ -58,6 +58,7 @@ export const Logo = (props) => {
       style={{
         width: `${getLogoWidthGutter(props, isMobile)}`,
         backgroundColor: "#3b5897",
+        zIndex: "-9999999999999999999999999999999999999",
       }}
     >
       {/*<img src={getLogo(props)} alt={`${APP_NAME} logo`} />*/}

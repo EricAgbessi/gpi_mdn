@@ -109,7 +109,7 @@ export const HeaderNav = (props) => {
       }}
     >
       <div className={`app-header-wrapper ${isNavTop ? "layout-top-nav" : ""}`}>
-        <Logo logoType={navMode} />
+        <Logo logoType={navMode}   />
         <div
           className="nav"
           style={{
